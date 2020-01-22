@@ -1,1 +1,1 @@
-mongoimport --db boarding --collection people --file titanic.csv --type csv --headerline
+mongoimport --db boarding --collection people --file boarding-manifest.csv --type csv --headerline

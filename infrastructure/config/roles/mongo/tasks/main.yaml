@@ -20,6 +20,4 @@
 
 - name: Import Data
   script: files/import-data.sh
-  args:
-    chdir: csproject
   run_once: true
