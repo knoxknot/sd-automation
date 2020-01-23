@@ -1,8 +1,21 @@
-- name: Configure Master
+- name: Configure Development Server
   hosts: master
   become: true
   become_method: sudo
   roles:
+    - common
+    - docker
+    - kubernetes
+    - golang
+    - mongo
+    - jenkins
+    - nginx
+
+- name: Configure Production Server
+  hosts: tag_Name_sd_automation
+  become: true
+  become_method: sudo
+  roles: 
     - common
     - docker
     - kubernetes
