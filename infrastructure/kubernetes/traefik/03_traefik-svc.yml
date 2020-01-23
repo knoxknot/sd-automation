@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-ingress-svc
+  namespace: kube-system
+spec:
+  selector:
+    k8s-app: traefik-ingress-lb
+  ports:
+    - protocol: TCP
+      nodePort: 31500 # The range of valid ports is 30000-32767
+      port: 80
+      name: index
+    - protocol: TCP
+      nodePort: 31600
+      port: 8080
+      name: dashboard
+  type: NodePort
+  externalIPs:
+  - 192.168.255.4
