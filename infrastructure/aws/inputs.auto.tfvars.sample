@@ -1,0 +1,5 @@
+credentials_path = "~/.aws/credentials"
+profile = "your aws profile"
+project = "sd-automation"
+region = "eu-west-1"
+instance_type = "t2.micro"
