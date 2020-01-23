@@ -1,0 +1,19 @@
+# Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: boardingapi
+    tier: backend
+  name: boardingapi-svc
+  namespace: default
+spec:
+  selector:
+    app: boardingapi
+    tier: backend
+  ports:
+  - name: boardingapi
+    protocol: TCP
+    port: 8080
+  type: ClusterIP

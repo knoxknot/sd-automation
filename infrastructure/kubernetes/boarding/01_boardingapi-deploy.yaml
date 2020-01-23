@@ -1,0 +1,41 @@
+# Deployment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: boardingapi
+    tier: backend
+  name: boardingapi-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boardingapi
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: boardingapi
+        tier: backend
+    spec:
+      containers:
+      - name: boardingapi
+        image: knoxknot/boardingapi:v1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: boardingport
+          containerPort: 8080
+        resources:
+          limits:
+            cpu: 20m
+            memory: 50Mi
+          requests:
+            cpu: 10m
+            memory: 20Mi
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+      hostNetwork: true
+      hostPID: true
