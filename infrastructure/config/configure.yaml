@@ -7,4 +7,6 @@
     - docker
     - kubernetes
     - golang
-    
+    - mongo
+    - jenkins
+    - nginx
