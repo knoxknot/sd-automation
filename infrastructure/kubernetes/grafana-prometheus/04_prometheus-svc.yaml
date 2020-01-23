@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service
+  namespace: monitoring
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/path:   /
+      prometheus.io/port:   '8080' 
+spec:
+  selector: 
+    app: prometheus-server
+  type: NodePort  #ClusterIP 
+  ports:
+    - port: 8080
+      targetPort: 9090 
+      nodePort: 30000
+      protocol: TCP
+      #name: prometheus
