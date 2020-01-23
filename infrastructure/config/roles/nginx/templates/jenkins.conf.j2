@@ -1,0 +1,42 @@
+# server {
+#   listen 80;
+#   server_name {{ansible_host}} samuelnwoye.website;
+#   return 301 https://$server_name$request_uri;
+# } 
+server {
+  listen 443 ssl;
+  {% if "master" in ansible_fqdn %}
+
+  server_name {{ansible_host}};
+  ssl_certificate /etc/nginx/ssl/{{ ansible_host }}.crt;
+
+  ssl_prefer_server_ciphers On;
+  ssl_protocols TLSv1.2;
+  ssl_session_cache shared:SSL:10m; 
+  ssl_certificate_key /etc/nginx/ssl/{{ ansible_host}}.key;
+  ssl_ciphers 'EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!RC4';
+
+  location / {
+    proxy_pass http://localhost:8080;
+    proxy_read_timeout 90s;
+    proxy_redirect  http://localhost:8080   https://{{ ansible_host}};
+  }    
+
+  {% else %}
+
+  server_name samuelnwoye.website;
+
+  location / {
+    proxy_pass http://localhost:8080;;
+    proxy_http_version 1.1;
+    proxy_redirect  http://localhost:8080   https://samuelnwoye.website;
+    try_files $uri $uri/ =404;
+  } 
+
+  {% endif %}
+
+  access_log     /var/log/nginx/jenkins.access.log;
+  error_log      /var/log/nginx/jenkins.error.log;
+} 
+
+

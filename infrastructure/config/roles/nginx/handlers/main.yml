@@ -1,0 +1,22 @@
+---
+# Start Services
+- name: Start Nginx
+  service:  
+    name: nginx 
+    state: started 
+    enabled: yes
+- name: Start Jenkins
+  service:  
+    name: jenkins 
+    state: started 
+    enabled: yes
+
+# Restart Services
+- name: Restart Nginx
+  service:  
+    name: nginx 
+    state: restarted 
+- name: Restart Jenkins
+  service:  
+    name: jenkins 
+    state: restarted 

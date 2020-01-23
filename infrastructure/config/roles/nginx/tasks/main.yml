@@ -1,0 +1,44 @@
+---
+- name: Install Nginx Key
+  apt_key: 
+   url: http://nginx.org/keys/nginx_signing.key 
+   state: present
+  run_once: yes
+
+- name: Add Nginx Source Repo
+  apt_repository: 
+   repo: deb http://nginx.org/packages/mainline/ubuntu/ {{ansible_lsb.codename}} nginx  
+   state: present
+
+- name: Update Apt Cache
+  apt: 
+   update_cache: yes
+
+- name: Install Nginx
+  apt: 
+   name: nginx
+   state: present
+  notify:
+    - Start Nginx 
+   
+- name: Create TLS Certificates Directory
+  file: 
+    path: "{{item}}"
+    state: directory
+  loop:
+    - /etc/nginx/ssl
+
+- name: Create TLS Certificates
+  script: files/cert.sh
+  args:
+    chdir: /etc/nginx/ssl
+  when: ansible_hostname == "master"
+  run_once: true 
+
+- name: Configure Nginx for Proxying Jenkins
+  template:
+    src: jenkins.conf.j2
+    dest: /etc/nginx/conf.d/jenkins.conf
+  notify:
+    - Restart Nginx 
+    - Restart Jenkins
