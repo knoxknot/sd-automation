@@ -1,0 +1,40 @@
+{
+  "description": "Boarding API Machine Image",
+  "variables": {
+    "amiName": "{{env `AMI_NAME`}}",
+    "amiRegion": "eu-west-1",
+    "sshUsername": "ubuntu"
+  },
+  "builders": [
+    { 
+      "ami_name": "{{user `amiName`}}-{{timestamp}}",
+      "instance_type": "t2.micro",
+      "region": "{{user `amiRegion`}}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/hvm-ssd/*ubuntu-xenial-16.04-amd64-server-*",
+          "root-device-type": "ebs",
+          "architecture": "x86_64"
+        },
+        "owners": [
+          "099720109477"
+        ],
+        "most_recent": true
+      },
+      "ssh_username": "{{user `sshUsername`}}",
+      "profile": "knoxknot",
+      "type": "amazon-ebs",
+      "tags": {
+        "Name": "{{user `amiName`}}-{{timestamp}}",
+        "CreatedBy": "Packer"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "configure.yaml"
+    }
+  ]
+}
