@@ -5,7 +5,7 @@ The source code for this project is designed in a modular manner defining contro
 #### Running the Application
 ---
 - Begin by following the instructions of the README.md of "infrastructure" directory
-- From the parent directory "csproject" change into "application" directory - `cd application` 
+- From the parent directory "sd-automation" change into "application" directory - `cd application` 
 - Run the "golibraries.sh" script to install required project libraries in GOPATH
  
 <b> Steps </b>  
