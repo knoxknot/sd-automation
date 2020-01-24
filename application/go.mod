@@ -1,4 +1,4 @@
-module gitlab.com/knoxknot/csproject/application
+module gitlab.com/knoxknot/sd-automation/application
 
 go 1.12
 
