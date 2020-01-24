@@ -5,7 +5,7 @@
 I orchestrated a virtual machine with an ubuntu operating system for this task. Please install python3, ansible, vagrant and virtualbox within your terminal. 
 
 <b> Steps </b>
-  - <code> ssh-keygen -t rsa -b 4096 -C "csproject key"</code> and type "/home/samuel/.ssh/csproject_key" on prompt to create an ssh key pair.
+  - <code> ssh-keygen -t rsa -b 4096 -C "sd-automation key"</code> and type "/home/samuel/.ssh/sd-automation_key" on prompt to create an ssh key pair.
   - <code> vagrant up --provision </code> # to provision and configure the vm with all the requiste technologies for the task.
   1. 
 
