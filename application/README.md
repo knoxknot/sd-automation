@@ -23,5 +23,3 @@ The source code for this project is designed in a modular manner defining contro
 `curl -X POST localhost:8080/api/v1/people -d '{"survived": true,"passengerClass": 1,"name": "Mr. Grace Chukwusom","sex": "male","age": 25,"siblingsOrSpousesAboard": 0,"parentsOrChildrenAboard": 0,"fare": 8.12}' -H "Content-Type: application/json"`  # Enter details of a person that boarded.  
 `curl -i -X PUT http://localhost:8080/api/v1/people/5e1efe5ebd182108b22242d3 -d '{"survived": false, "sex": "female","siblingsOrSpousesAboard": 3,"age": 35}' -H "Content-Type: application/json"`    # Update details of person on board. Replace 5e1efe5ebd182108b22242d3 with selected uuid.  
 `curl -X DELETE http://localhost:8080/api/v1/people/5e1efe5ebd182108b22242d3`    # Detele a person that unboarded. Replace 5e1efe5ebd182108b22242d3 with selected uuid.
-
-

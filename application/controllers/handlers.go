@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"gitlab.com/knoxknot/csproject/application/models"
+	"gitlab.com/knoxknot/sd-automation/application/models"
 )
 
 // implement a retrival of the people on the list

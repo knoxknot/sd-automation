@@ -8,7 +8,7 @@ import (
 
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 	"github.com/gorilla/mux"
-	"gitlab.com/knoxknot/csproject/application/models"
+	"gitlab.com/knoxknot/sd-automation/application/models"
 )
 
 var (

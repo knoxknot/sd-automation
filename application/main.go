@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"gitlab.com/knoxknot/csproject/application/controllers"
+	"gitlab.com/knoxknot/sd-automation/application/controllers"
 )
 
 
